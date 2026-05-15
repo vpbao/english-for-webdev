@@ -75,7 +75,24 @@ When user starts a new session and provides a progress file:
    - Words due for review → weave them into warm-up
    - Next uncompleted lesson from the catalog
 
-## Spaced Repetition States
+## Spaced Repetition System — How It Actually Works
+
+### The Challenge
+
+Unlike Anki or Duolingo, this skill runs in chat sessions without a persistent database. Each conversation starts fresh. So spaced repetition relies on two mechanisms working together:
+
+1. **Progress file** (`english-progress.md`) — the "memory" between sessions
+2. **Scheduled daily reminder** — the "alarm clock" that nudges you to review
+
+### Learning States
+
+Each vocabulary word progresses through 4 states:
+
+```
+New → Learning → Familiar → Known
+ ↑       ↑          ↑
+ └───────┴──────────┘  (drop back if answered wrong)
+```
 
 | State | Review Interval | Promotion condition |
 |-------|----------------|---------------------|
@@ -85,6 +102,52 @@ When user starts a new session and provides a progress file:
 | Known | 2-4 weeks | Stays here, periodic review |
 
 If answered incorrectly at any state → drop back one level.
+
+### Flow in Practice
+
+**End of each session:**
+1. Skill lists all new words learned with their state and next review date
+2. Skill updates the progress file with the new vocabulary entries
+3. Skill offers to save the updated `english-progress.md`
+
+**Start of next session:**
+1. User uploads (or skill reads) the progress file
+2. Skill scans the vocabulary table for words where `Next Review ≤ today`
+3. Due words are woven into the warm-up naturally — not as a flashcard drill, but as part of conversation:
+   - "Before we start today's lesson, quick check: how would you describe deploying a hotfix to production?"
+   - "Remember 'refactor'? Use it in a sentence about your current project."
+4. Based on the user's answer, update the word's state (promote or demote)
+
+**During lessons:**
+- When teaching new content, naturally reuse previously learned vocabulary
+- If a user correctly uses a "Familiar" word unprompted, note it and consider promoting to "Known"
+
+### Daily Review Reminder (Scheduled Task)
+
+To compensate for the lack of push notifications, the skill should suggest setting up a daily scheduled task on first use. This task runs automatically and prompts the user to do a quick review session.
+
+After the first lesson, suggest:
+"Bạn có muốn mình tạo lịch nhắc ôn tập hàng ngày không? Mỗi sáng mình sẽ gửi cho bạn 5 từ cần ôn — chỉ mất 2-3 phút thôi!"
+
+If the user agrees, guide them to set up a scheduled task with a prompt like:
+"Read my english-progress.md file, find words due for review today, and give me a quick 5-word quiz. Keep it under 3 minutes. Show my streak status too."
+
+This creates a daily habit loop:
+```
+Morning reminder → 2-min vocab quiz → streak maintained → motivation sustained
+```
+
+### Limitations & Honesty
+
+Be transparent with the user about what this system can and can't do:
+- ✅ Tracks vocabulary states and review dates accurately
+- ✅ Naturally weaves reviews into lessons (not boring flashcards)
+- ✅ Daily reminders via scheduled tasks
+- ❌ Not automatic like Anki — requires uploading progress file
+- ❌ Can't track review accuracy across sessions precisely (relies on self-reported answers in chat)
+- ❌ No mobile push notifications
+
+The trade-off: less automatic than a dedicated app, but every review happens in the context of real developer work — which makes vocabulary stick better than isolated flashcards.
 
 ## First Session (No Progress File)
 

@@ -67,14 +67,19 @@ Hoặc cứ nói bạn muốn gì, mình sẽ giúp!"
 
 If this is a first session (no progress file), skip the stats line and the review reminder.
 
-## Cross-Session Continuity
+## Cross-Session Continuity & Spaced Repetition
 
-→ Read `references/progress-tracking.md` for the full progress file format and session resume logic.
+→ Read `references/progress-tracking.md` for full details on progress file format, spaced repetition flow, and session resume logic.
 
 Key points:
 - At the end of every session, offer to save/update `english-progress.md`
 - At session start, if user uploads a progress file, read it and resume from where they left off
 - User can say "tiếp tục học" / "continue learning" to resume
+- Vocabulary uses spaced repetition: New (1 day) → Learning (2-3 days) → Familiar (1 week) → Known (2-4 weeks)
+- Weave due-for-review words into warm-ups naturally — never as isolated flashcard drills
+
+### Daily Review Reminder
+After the first lesson, suggest setting up a scheduled daily task to remind the user to review vocabulary. This creates a daily habit loop and keeps streaks alive. See `references/progress-tracking.md` for the scheduled task setup guide.
 
 ## Adaptive Difficulty
 
