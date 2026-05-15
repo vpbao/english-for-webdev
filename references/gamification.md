@@ -84,3 +84,7 @@ When the user asks for `/progress`, generate:
 6. **Streak Stats:** Current, longest, consistency percentage
 7. **Recommendation:** What to focus on next session
 8. **Comparison:** vs previous report if available
+
+Keep gamification subordinate to learning. XP and badges should motivate, not inflate trivial activity or distract from honest feedback.
+
+If the progress report is saved as a reusable HTML artifact, read `html-deliverables.md` and use the standard progress-report template there.

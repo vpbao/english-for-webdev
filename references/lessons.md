@@ -4,9 +4,26 @@ This file covers Modes 2 (Interactive Lesson), 3 (Quick Practice), 4 (Review & C
 
 ---
 
+## Contents
+
+1. Mode 2: Interactive Lesson
+2. Mode 3: Quick Practice
+3. Mode 4: Review & Correct
+4. Mode 6: Inline Correction
+5. Output Formatting
+
 ## Mode 2: Interactive Lesson
 
 Each lesson follows 4 parts:
+
+### Lesson Design Defaults
+
+- Start with speaking, not exposition.
+- Teach reusable chunks and sentence patterns before isolated vocabulary.
+- Use the learner's real tasks, bugs, PRs, or meetings whenever possible.
+- When the learner makes an error, diagnose the cause: translation-from-Vietnamese, missing chunk, tense rule, article use, preposition, or pronunciation.
+- Include at least one timed drill so the learner practices retrieval speed, not only recognition.
+- End with a sentence the learner can realistically reuse at work the next day.
 
 ### Part 1: Warm-up (2-3 minutes)
 A quick question or mini-exercise in English to activate what they know. Keep it fun and low-pressure.
@@ -82,6 +99,15 @@ Interactive exercises:
 
 Adapt depth and pace to the user's level. Struggling → slow down, more Vietnamese. Breezing through → more challenge, less Vietnamese.
 
+### Quality Bar
+
+Every completed lesson should include:
+- 3-7 reusable chunks or sentence patterns
+- at least 1 speaking task
+- at least 1 retrieval task under mild time pressure
+- at least 1 realistic developer scenario
+- a short recap the learner could reuse tomorrow at work
+
 ---
 
 ## Mode 3: Quick Practice
@@ -95,6 +121,11 @@ Short, focused exercises (5-10 minutes):
 
 End with +20 XP earned.
 
+Quality bar:
+- keep the task genuinely short
+- include immediate feedback after each answer
+- reuse at least 1 previously learned chunk when progress exists
+
 ---
 
 ## Mode 4: Review & Correct
@@ -107,6 +138,11 @@ The user pastes their own English writing (PR description, email, Slack message,
 5. Highlights what they did well (encouragement matters!)
 
 End with +30 XP earned.
+
+Quality bar:
+- preserve the user's intent before polishing style
+- distinguish must-fix errors from optional naturalness improvements
+- end with one reusable pattern the learner can apply next time
 
 ---
 
@@ -125,6 +161,11 @@ Different from Review — this mode **teaches while correcting**. The user paste
 
 This mode turns every real work artifact into a learning opportunity. End with +30 XP earned.
 
+Quality bar:
+- do not overcorrect into unnatural or over-formal English
+- keep explanations proportional to the learner's level
+- if the same mistake recurs, name the pattern explicitly and track it
+
 ---
 
 ## Output Formatting (all modes)
@@ -134,4 +175,5 @@ This mode turns every real work artifact into a learning opportunity. End with +
 - Tables for vocabulary lists (English | IPA | Vietnamese | Example Sentence)
 - Bold for key vocabulary being taught
 - Numbered steps for exercises
-- When saving to file, include: date, topic, vocabulary with translations, exercise answers (separate section), and links to recommended resources
+- When saving a reusable lesson artifact, include: date, topic, vocabulary/chunks with translations, exercise answers in a separate section, and links to recommended resources
+- When saving a reusable lesson sheet or quiz as HTML, read `html-deliverables.md` and use its standard layout, component names, filenames, and templates

@@ -7,6 +7,8 @@ Before starting a mock interview, ask:
 2. What company/role type? (startup, FAANG-style, agency, remote team)
 3. How long do they want to practice? (15 min quick round, 30 min full session, 45 min deep practice)
 
+If the user already specified the type or role, do not ask again. Start with the missing pieces only.
+
 ## Mock Interview Flow
 
 ### Behavioral Interview
@@ -52,3 +54,11 @@ Provide an overall assessment:
 - Top 3 phrases to memorize before the real interview
 - Recommended practice focus
 - +100 XP earned
+
+## Quality Bar
+
+Every mock interview should:
+- test both content quality and communication quality
+- include at least one follow-up question, not only isolated prompts
+- reward clear thinking aloud even when the answer is imperfect
+- end with concrete language upgrades the learner can reuse in the next interview

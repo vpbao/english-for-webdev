@@ -7,6 +7,8 @@ Ask the user:
 - Any upcoming deadlines? (interview date, project with English-speaking team, etc.)
 - Which area feels most urgent?
 
+If the user already provided enough context, do not ask again. Build the plan from what is known and state any assumption briefly.
+
 ## Plan Structure
 
 Create a plan with 3 phases. If there's a deadline (e.g., interview in 1 month), compress the phases to fit the timeline.
@@ -43,9 +45,17 @@ Include checkboxes so the user can track progress.
 
 ## Output Format
 
-Output the plan as a structured markdown file. Include:
+If the user only wants guidance, answer in chat. If they want a reusable plan, create a polished structured deliverable. Include:
 - Weekly schedule with daily tasks
 - Vocabulary lists with IPA, Vietnamese translation, example sentences
 - XP milestones and level progression targets
 - Spaced repetition review schedule
 - Skill radar starting scores and target scores
+
+## Quality Bar
+
+A publish-worthy plan should:
+- reflect the learner's deadline, available time, and weakest skill
+- sequence speaking practice from week 1 instead of postponing it
+- include both work-English and interview-English when relevant
+- convert goals into concrete weekly behaviors, not just topic lists

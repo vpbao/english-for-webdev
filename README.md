@@ -1,109 +1,112 @@
 # English for Web Developers
 
-A Claude skill that teaches English specifically for web developers — built by a Vietnamese developer, for Vietnamese developers.
+A speaking-first English skill for Vietnamese web developers.
 
 ## What is this?
 
-This is a **Claude Skill** (`.skill` file) that turns Claude into a personalized English tutor who understands your tech stack, your daily work, and the specific challenges Vietnamese speakers face when learning English.
+This is a **Claude Skill** (`.skill` file) that turns Claude into a practical English coach for real developer communication: standups, PRs, code reviews, bugs, meetings, documentation, and interviews.
+
+It is built around one central idea: Vietnamese developers often know more English than they can use in real time. So the skill trains **retrieval**, **reusable chunks**, and **workplace communication**, not just passive vocabulary.
 
 ## Features
 
-**7 Learning Modes:**
+**7 Learning Modes**
 
 | Mode | Command | Description |
 |------|---------|-------------|
 | Learning Plan | `/plan` | Multi-week study plan tailored to your schedule and goals |
-| Interactive Lesson | `/lesson` | Structured lesson with warm-up, content, practice, and summary |
-| Quick Practice | `/practice` | 5-10 minute exercises: translate, fix errors, role-play |
-| Review | `/review` | Paste your English writing, get corrections and tips |
+| Interactive Lesson | `/lesson` | Structured lesson with warm-up, teaching, practice, and summary |
+| Quick Practice | `/practice` | 5-10 minute drills: translate, fix errors, role-play |
+| Review | `/review` | Paste your English writing and get clarity-focused feedback |
 | Interview Prep | `/interview` | Mock technical interviews with feedback |
-| Inline Correction | `/correct` | Correct + teach: explains the rule behind each error |
+| Inline Correction | `/correct` | Correct + teach: the reason behind each fix |
 | Progress | `/progress` | View your level, XP, streak, and skill radar |
 
-**Built-in Systems:**
-- Spaced Repetition — review vocabulary right before you forget
-- Gamification — XP, levels (Code Reader → Global Dev), streaks, badges
-- Progress Tracking — saves progress between sessions via `english-progress.md`
-- 15 pre-built lesson topics from beginner to advanced
-- Vietnamese-specific pronunciation and grammar guidance
+**Built-in Systems**
 
-**Stack-Aware:** All examples use PHP/Laravel, React/Next.js, and Node.js/TypeScript.
+- Speaking-first, chunk-based teaching
+- Spaced repetition for words and phrases
+- XP, levels, streaks, and badges
+- Automatic progress continuity through one `english-progress.md` file
+- Reusable HTML deliverables for lesson sheets, quizzes, and progress reports
+- 15 lesson topics from beginner to advanced
+- Vietnamese-specific grammar and pronunciation guidance
+
+**Stack-aware examples**
+
+Examples favor PHP/Laravel, React/Next.js, and Node.js/TypeScript so the English stays close to real web-development work.
 
 ## Installation
 
-### Option 1: Install the `.skill` file (Recommended)
+### Option 1: Install the `.skill` file
 
-1. Download `english-for-webdev.skill` from the [Releases](../../releases) page
-2. Double-click the file — it will auto-install into Claude
+1. Download `english-for-webdev.skill`
+2. Double-click it to install into Claude
 
 ### Option 2: Install from source
 
-1. Clone this repo:
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/english-for-webdev.git
-   ```
-2. Copy the skill folder to your Claude skills directory:
-   ```bash
-   # macOS
-   cp -r english-for-webdev ~/.claude/skills/
-
-   # Or add to your project's .claude/skills/ directory
-   cp -r english-for-webdev /path/to/your/project/.claude/skills/
-   ```
+```bash
+git clone https://github.com/YOUR_USERNAME/english-for-webdev.git
+cp -r english-for-webdev ~/.claude/skills/
+```
 
 ## Usage
 
-Once installed, just talk to Claude naturally:
+Talk naturally:
 
-```
-"học tiếng Anh"
-"I want to learn English"  
-"dạy mình viết PR description"
-"sửa giúp mình cái email này"
-"luyện phỏng vấn tiếng Anh"
-"tạo lộ trình học cho mình"
-```
-
-The skill will automatically trigger and present you with learning options.
-
-### Example Session
-
-```
-You: học tiếng Anh
-
-Claude: Chào bạn! Ready to level up your English today? 💪
-
-Hôm nay bạn muốn làm gì?
-
-1. 📋 Learning Plan — Tạo/xem lộ trình học
-2. 📖 Lesson — Học một bài mới
-3. ✏️ Practice — Luyện tập nhanh 5-10 phút
-4. 🔍 Review — Sửa bài viết tiếng Anh của bạn
-5. 🎤 Interview Prep — Luyện phỏng vấn
-6. ✨ Correct — Paste bài viết, mình sửa + dạy luôn
-7. 📊 Progress — Xem tiến độ học tập
+```text
+học tiếng Anh
+I want to learn English for work
+dạy mình viết PR description
+sửa giúp mình cái email này
+luyện phỏng vấn tiếng Anh
+tạo lộ trình học cho mình
 ```
 
-### Saving Progress Between Sessions
+If your request is broad, the skill offers modes. If your request is specific, it acts directly instead of forcing you through a menu.
 
-At the end of each session, the skill will offer to save your progress to `english-progress.md`. Keep this file and share it at the start of your next session to continue where you left off.
+### Example
+
+```text
+You: sửa giúp mình PR description này
+
+Claude:
+Corrected version:
+...
+
+Why these changes:
+...
+
+Now try one short sentence using "This PR addresses..."
+```
+
+## Progress Between Sessions
+
+The skill automatically reuses one `english-progress.md` file for continuity:
+
+- if a progress file already exists, it reads and updates that file
+- if none exists, it creates one after the first meaningful learning session
+- the learner should not need to manually upload or manage progress files
+
+The skill tracks phrases and chunks such as `I'm still investigating...` or `deploy to production`, not only isolated words.
 
 ## Skill Structure
 
-```
+```text
 english-for-webdev/
-├── SKILL.md                          # Core skill (mode routing, session start)
+├── SKILL.md
 └── references/
-    ├── learning-plan.md              # Learning plan generation details
-    ├── lessons.md                    # Lesson/practice/review/correction details
-    ├── interview-prep.md             # Mock interview flow
-    ├── vocabulary-database.md        # Word lists and phrase banks
-    ├── vietnamese-challenges.md      # Vietnamese-specific English difficulties
-    ├── gamification.md               # XP, levels, streaks, badges
-    └── progress-tracking.md          # Progress file format, session resume
+    ├── learning-plan.md
+    ├── lessons.md
+    ├── interview-prep.md
+    ├── vocabulary-database.md
+    ├── vietnamese-challenges.md
+    ├── gamification.md
+    ├── progress-tracking.md
+    └── html-deliverables.md
 ```
 
-The skill uses **progressive disclosure** — Claude only loads the SKILL.md (100 lines) on trigger, then reads specific reference files as needed. This keeps context usage efficient.
+The skill uses **progressive disclosure**: the core instructions stay compact, and Claude reads detailed reference files only when a mode needs them.
 
 ## Lesson Catalog
 

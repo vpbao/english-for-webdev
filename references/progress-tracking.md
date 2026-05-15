@@ -4,9 +4,28 @@ Since each conversation is a new session, we use a progress file to maintain lea
 
 ---
 
+## Contents
+
+1. Canonical Progress File Policy
+2. Progress File Format
+3. Session Resume Logic
+4. Spaced Repetition System
+5. First Session
+
+## Canonical Progress File Policy
+
+Use exactly one progress file for a learner:
+
+1. Search for an existing `english-progress.md` in the active learning location:
+   - first, the current workspace root
+   - then obvious existing learning folders such as `claude/` or `codex/`
+2. If one exists, reuse that file for the whole learner journey.
+3. If none exists, create `english-progress.md` in the current workspace root after the first meaningful session.
+4. Never create duplicate progress files in multiple folders unless the user explicitly asks for separate profiles.
+
 ## Progress File Format
 
-At the end of every session, offer to save/update `english-progress.md` with this structure:
+At the end of every completed learning session, save/update the canonical `english-progress.md` with this structure:
 
 ```markdown
 # English Learning Progress
@@ -29,12 +48,12 @@ At the end of every session, offer to save/update `english-progress.md` with thi
 | Grammar | 2/5 | Articles and tenses still weak |
 
 ## Vocabulary (Spaced Repetition)
-| Word | State | Next Review | Last Reviewed |
-|------|-------|-------------|---------------|
-| deploy | Known | 2026-06-01 | 2026-05-15 |
-| refactor | Familiar | 2026-05-22 | 2026-05-15 |
-| deprecate | Learning | 2026-05-18 | 2026-05-15 |
-| scaffold | New | 2026-05-16 | 2026-05-15 |
+| Word / Phrase | State | Next Review | Last Reviewed |
+|---------------|-------|-------------|---------------|
+| deploy to production | Known | 2026-06-01 | 2026-05-15 |
+| refactor this controller | Familiar | 2026-05-22 | 2026-05-15 |
+| I'm still investigating... | Learning | 2026-05-18 | 2026-05-15 |
+| The issue happens when... | New | 2026-05-16 | 2026-05-15 |
 
 ## Completed Lessons
 - [x] 2026-05-10 — Standup survival kit (+50 XP)
@@ -59,10 +78,10 @@ At the end of every session, offer to save/update `english-progress.md` with thi
 
 ### Auto-read Progress (no upload needed)
 
-The progress file lives in the user's workspace folder — the same folder this skill is installed in. At session start, automatically read `english-progress.md` using the Read tool. The user does NOT need to upload anything.
+At session start, automatically read the canonical progress file if it exists. The user should not need to upload it manually.
 
 Steps:
-1. **Auto-read** `english-progress.md` from the workspace folder (silently, don't ask)
+1. **Auto-read** the canonical `english-progress.md` silently
 2. **Calculate streak:** Compare last session date with today
    - Same day or consecutive → streak continues
    - 1 day gap → streak continues (grace period)
@@ -80,7 +99,7 @@ Steps:
 
 ### Auto-save Progress (no manual step needed)
 
-At the end of every session, automatically save/update `english-progress.md` to the workspace folder using the Write tool. Don't ask for permission — just save and confirm: "Progress saved! See you tomorrow 🔥"
+At the end of every completed learning session, automatically save/update the canonical `english-progress.md`. Do not ask for permission; confirm briefly: "Progress saved! See you tomorrow 🔥"
 
 ## Spaced Repetition System — How It Actually Works
 
@@ -113,12 +132,12 @@ If answered incorrectly at any state → drop back one level.
 ### Flow in Practice
 
 **End of each session:**
-1. Skill lists all new words learned with their state and next review date
+1. Skill lists all new words/chunks learned with their state and next review date
 2. Skill updates the progress file with the new vocabulary entries
-3. Skill offers to save the updated `english-progress.md`
+3. Skill saves the updated `english-progress.md`
 
 **Start of next session:**
-1. User uploads (or skill reads) the progress file
+1. Skill reads the canonical progress file
 2. Skill scans the vocabulary table for words where `Next Review ≤ today`
 3. Due words are woven into the warm-up naturally — not as a flashcard drill, but as part of conversation:
    - "Before we start today's lesson, quick check: how would you describe deploying a hotfix to production?"
@@ -158,9 +177,9 @@ The trade-off: less automatic than a dedicated app, but every review happens in 
 
 ## First Session (No Progress File)
 
-If `english-progress.md` is not found in the workspace folder:
+If no canonical `english-progress.md` is found:
 - Skip stats display in the greeting
 - Ask: "Is this your first time, or have you been learning already?"
 - If first time → start from Level 1, 0 XP
 - If continuing without file → ask about their level and adjust accordingly
-- After the session, auto-create `english-progress.md` in the workspace folder — future sessions will pick it up automatically
+- After the session, auto-create `english-progress.md` in the current workspace root — future sessions should reuse that same file
