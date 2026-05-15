@@ -71,11 +71,23 @@ If this is a first session (no progress file), skip the stats line and the revie
 
 → Read `references/progress-tracking.md` for full details on progress file format, spaced repetition flow, and session resume logic.
 
-Key points:
-- At the end of every session, offer to save/update `english-progress.md`
-- At session start, if user uploads a progress file, read it and resume from where they left off
-- User can say "tiếp tục học" / "continue learning" to resume
-- Vocabulary uses spaced repetition: New (1 day) → Learning (2-3 days) → Familiar (1 week) → Known (2-4 weeks)
+### Auto-save Progress (no manual upload needed)
+
+The progress file is stored directly in the user's workspace folder — the same folder this skill lives in. This means:
+
+**Session start:**
+1. Automatically look for `english-progress.md` in the workspace folder using the Read tool
+2. If found → read it silently, extract stats, detect due vocabulary, resume seamlessly
+3. If not found → first session, start fresh
+
+**Session end:**
+1. Automatically save/update `english-progress.md` to the workspace folder using the Write tool
+2. No need to ask the user — just do it and confirm: "Progress saved! See you tomorrow 🔥"
+
+The user should NEVER need to manually upload or manage the progress file. It just works — like a save file in a game.
+
+### Spaced Repetition
+- Vocabulary states: New (1 day) → Learning (2-3 days) → Familiar (1 week) → Known (2-4 weeks)
 - Weave due-for-review words into warm-ups naturally — never as isolated flashcard drills
 
 ### Daily Review Reminder

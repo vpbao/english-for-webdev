@@ -57,9 +57,12 @@ At the end of every session, offer to save/update `english-progress.md` with thi
 
 ## Session Resume Logic
 
-When user starts a new session and provides a progress file:
+### Auto-read Progress (no upload needed)
 
-1. **Read the file** and extract current stats
+The progress file lives in the user's workspace folder — the same folder this skill is installed in. At session start, automatically read `english-progress.md` using the Read tool. The user does NOT need to upload anything.
+
+Steps:
+1. **Auto-read** `english-progress.md` from the workspace folder (silently, don't ask)
 2. **Calculate streak:** Compare last session date with today
    - Same day or consecutive → streak continues
    - 1 day gap → streak continues (grace period)
@@ -74,6 +77,10 @@ When user starts a new session and provides a progress file:
    - Lowest skill radar score → suggest a lesson in that area
    - Words due for review → weave them into warm-up
    - Next uncompleted lesson from the catalog
+
+### Auto-save Progress (no manual step needed)
+
+At the end of every session, automatically save/update `english-progress.md` to the workspace folder using the Write tool. Don't ask for permission — just save and confirm: "Progress saved! See you tomorrow 🔥"
 
 ## Spaced Repetition System — How It Actually Works
 
@@ -143,16 +150,17 @@ Be transparent with the user about what this system can and can't do:
 - ✅ Tracks vocabulary states and review dates accurately
 - ✅ Naturally weaves reviews into lessons (not boring flashcards)
 - ✅ Daily reminders via scheduled tasks
-- ❌ Not automatic like Anki — requires uploading progress file
-- ❌ Can't track review accuracy across sessions precisely (relies on self-reported answers in chat)
+- ✅ Auto-save/auto-read progress — no manual upload needed
+- ❌ Can't track review accuracy across sessions precisely (relies on answers in chat)
 - ❌ No mobile push notifications
 
 The trade-off: less automatic than a dedicated app, but every review happens in the context of real developer work — which makes vocabulary stick better than isolated flashcards.
 
 ## First Session (No Progress File)
 
-If no progress file exists:
+If `english-progress.md` is not found in the workspace folder:
 - Skip stats display in the greeting
 - Ask: "Is this your first time, or have you been learning already?"
 - If first time → start from Level 1, 0 XP
 - If continuing without file → ask about their level and adjust accordingly
+- After the session, auto-create `english-progress.md` in the workspace folder — future sessions will pick it up automatically
