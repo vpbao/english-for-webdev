@@ -6,80 +6,70 @@
 
 A speaking-first English skill for Vietnamese web developers.
 
-![English for Web Developers social preview](docs/assets/social-preview.png)
+It helps developers move from **reading English** to **using English at work**: in standups, PRs, code reviews, bug reports, documentation, and interviews.
 
-## What is this?
+- Website: https://vpbao.github.io/english-for-webdev/
+- Latest release: https://github.com/vpbao/english-for-webdev/releases
 
-This is a **Claude Skill** (`.skill` file) that turns Claude into a practical English coach for real developer communication: standups, PRs, code reviews, bugs, meetings, documentation, and interviews.
+## Why this exists
 
-It is built around one central idea: Vietnamese developers often know more English than they can use in real time. So the skill trains **retrieval**, **reusable chunks**, and **workplace communication**, not just passive vocabulary.
+Vietnamese developers often know more English than they can use in real time. The bottleneck is usually not vocabulary size; it is retrieval speed, reusable sentence patterns, and practice in realistic situations.
 
-## Features
+This skill focuses on:
 
-**7 Learning Modes**
+- **speaking-first practice** instead of passive study
+- **chunks and collocations** instead of isolated words
+- **real developer communication** instead of textbook scenarios
+- **Vietnamese-specific guidance** for common grammar and pronunciation traps
 
-| Mode | Command | Description |
-|------|---------|-------------|
-| Learning Plan | `/plan` | Multi-week study plan tailored to your schedule and goals |
-| Interactive Lesson | `/lesson` | Structured lesson with warm-up, teaching, practice, and summary |
-| Quick Practice | `/practice` | 5-10 minute drills: translate, fix errors, role-play |
-| Review | `/review` | Paste your English writing and get clarity-focused feedback |
-| Interview Prep | `/interview` | Mock technical interviews with feedback |
-| Inline Correction | `/correct` | Correct + teach: the reason behind each fix |
-| Progress | `/progress` | View your level, XP, streak, and skill radar |
+## Quick start
 
-**Built-in Systems**
+### Install the `.skill` package
 
-- Speaking-first, chunk-based teaching
-- Spaced repetition for words and phrases
-- XP, levels, streaks, and badges
-- Automatic progress continuity through one `english-progress.md` file
-- Reusable HTML deliverables for lesson sheets, quizzes, and progress reports
-- 15 lesson topics from beginner to advanced
-- Vietnamese-specific grammar and pronunciation guidance
-
-**Stack-aware examples**
-
-Examples favor PHP/Laravel, React/Next.js, and Node.js/TypeScript so the English stays close to real web-development work.
-
-## Website
-
-A polished GitHub Pages landing page lives in `docs/index.html`. Once Pages is enabled for the `docs/` folder, the public site can live at:
-
-```text
-https://vpbao.github.io/english-for-webdev/
-```
-
-## Installation
-
-### Option 1: Install the `.skill` file
-
-1. Download `english-for-webdev.skill`
+1. Download `english-for-webdev.skill` from the latest release
 2. Double-click it to install into Claude
 
-### Option 2: Install from source
+### Or install from source
 
 ```bash
 git clone https://github.com/vpbao/english-for-webdev.git
 cp -r english-for-webdev ~/.claude/skills/
 ```
 
-## Usage
-
-Talk naturally:
+Then talk naturally:
 
 ```text
 học tiếng Anh
-I want to learn English for work
+luyện standup 5 phút
 dạy mình viết PR description
 sửa giúp mình cái email này
 luyện phỏng vấn tiếng Anh
-tạo lộ trình học cho mình
 ```
 
-If your request is broad, the skill offers modes. If your request is specific, it acts directly instead of forcing you through a menu.
+If the request is broad, the skill offers learning modes. If the request is specific, it acts directly instead of forcing a menu first.
 
-### Example
+## What it can do
+
+| Mode | Command | Description |
+|------|---------|-------------|
+| Learning Plan | `/plan` | Build a multi-week study plan around goals and schedule |
+| Interactive Lesson | `/lesson` | Teach through warm-up, practice, and summary |
+| Quick Practice | `/practice` | Run short drills, quizzes, and role-play |
+| Review | `/review` | Improve writing with clarity-focused feedback |
+| Interview Prep | `/interview` | Run mock technical interviews with language feedback |
+| Inline Correction | `/correct` | Correct writing while teaching the reason behind each fix |
+| Progress | `/progress` | Show level, XP, streak, and skill radar |
+
+Built in:
+
+- spaced repetition for words and phrases
+- XP, levels, streaks, and badges
+- one canonical `english-progress.md` file for continuity
+- reusable HTML deliverables for lesson sheets, quizzes, and progress reports
+- 15 lesson topics from beginner to advanced
+- examples tailored to PHP/Laravel, React/Next.js, and Node.js/TypeScript
+
+## Example
 
 ```text
 You: sửa giúp mình PR description này
@@ -94,35 +84,7 @@ Why these changes:
 Now try one short sentence using "This PR addresses..."
 ```
 
-## Progress Between Sessions
-
-The skill automatically reuses one `english-progress.md` file for continuity:
-
-- if a progress file already exists, it reads and updates that file
-- if none exists, it creates one after the first meaningful learning session
-- the learner should not need to manually upload or manage progress files
-
-The skill tracks phrases and chunks such as `I'm still investigating...` or `deploy to production`, not only isolated words.
-
-## Skill Structure
-
-```text
-english-for-webdev/
-├── SKILL.md
-└── references/
-    ├── learning-plan.md
-    ├── lessons.md
-    ├── interview-prep.md
-    ├── vocabulary-database.md
-    ├── vietnamese-challenges.md
-    ├── gamification.md
-    ├── progress-tracking.md
-    └── html-deliverables.md
-```
-
-The skill uses **progressive disclosure**: the core instructions stay compact, and Claude reads detailed reference files only when a mode needs them.
-
-## Lesson Catalog
+## Lesson catalog
 
 | # | Topic | Level |
 |---|-------|-------|
@@ -141,6 +103,32 @@ The skill uses **progressive disclosure**: the core instructions stay compact, a
 | 13 | Presenting a demo | Advanced |
 | 14 | Writing an RFC/tech spec | Advanced |
 | 15 | Negotiating technical decisions | Advanced |
+
+## Progress between sessions
+
+The skill automatically reuses one `english-progress.md` file:
+
+- if a progress file already exists, it reads and updates that file
+- if none exists, it creates one after the first meaningful learning session
+- it tracks phrases and chunks such as `I'm still investigating...` or `deploy to production`, not only isolated words
+
+## Project structure
+
+```text
+english-for-webdev/
+├── SKILL.md
+└── references/
+    ├── learning-plan.md
+    ├── lessons.md
+    ├── interview-prep.md
+    ├── vocabulary-database.md
+    ├── vietnamese-challenges.md
+    ├── gamification.md
+    ├── progress-tracking.md
+    └── html-deliverables.md
+```
+
+The skill uses **progressive disclosure**: the core instructions stay compact, and Claude reads detailed reference files only when a mode needs them.
 
 ## License
 
