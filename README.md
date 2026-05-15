@@ -1,6 +1,12 @@
 # English for Web Developers
 
+[![Website](https://img.shields.io/badge/website-live-52d6c8?style=flat-square)](https://vpbao.github.io/english-for-webdev/)
+[![Release](https://img.shields.io/github/v/release/vpbao/english-for-webdev?style=flat-square)](https://github.com/vpbao/english-for-webdev/releases)
+[![License](https://img.shields.io/badge/license-MIT-8c7cff?style=flat-square)](#license)
+
 A speaking-first English skill for Vietnamese web developers.
+
+![English for Web Developers social preview](docs/assets/social-preview.png)
 
 ## What is this?
 

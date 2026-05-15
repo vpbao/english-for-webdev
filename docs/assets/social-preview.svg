@@ -1,0 +1,62 @@
+<svg width="1280" height="640" viewBox="0 0 1280 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1280" y2="640" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#07101D"/>
+      <stop offset="0.55" stop-color="#0D1830"/>
+      <stop offset="1" stop-color="#07101D"/>
+    </linearGradient>
+    <radialGradient id="glowA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(178 68) rotate(42.3) scale(443.874 344.719)">
+      <stop stop-color="#8C7CFF" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#8C7CFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1081 102) rotate(139.73) scale(359.801 273.088)">
+      <stop stop-color="#52D6C8" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#52D6C8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mark" x1="90" y1="92" x2="162" y2="164" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#52D6C8"/>
+      <stop offset="1" stop-color="#8C7CFF"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="756" y1="114" x2="1138" y2="493" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#13233F"/>
+      <stop offset="1" stop-color="#0D1729"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="640" rx="36" fill="url(#bg)"/>
+  <rect width="1280" height="640" rx="36" fill="url(#glowA)"/>
+  <rect width="1280" height="640" rx="36" fill="url(#glowB)"/>
+
+  <rect x="76" y="80" width="86" height="86" rx="26" fill="url(#mark)"/>
+  <text x="99" y="136" fill="#08111F" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="800">E↗</text>
+
+  <text x="76" y="224" fill="#FFD166" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="3">SPEAKING-FIRST ENGLISH FOR VIETNAMESE WEB DEVELOPERS</text>
+  <text x="76" y="296" fill="#F5F7FF" font-family="Inter, Arial, sans-serif" font-size="56" font-weight="800" letter-spacing="-2">Đọc hiểu được chưa đủ.</text>
+  <text x="76" y="360" fill="#F5F7FF" font-family="Inter, Arial, sans-serif" font-size="56" font-weight="800" letter-spacing="-2">Hãy nói ra được khi công việc cần.</text>
+  <text x="76" y="420" fill="#AFBAD5" font-family="Inter, Arial, sans-serif" font-size="24">Standups · PRs · Code reviews · Bug reports · Interviews</text>
+
+  <g>
+    <rect x="76" y="476" width="184" height="48" rx="24" fill="#52D6C8"/>
+    <text x="101" y="507" fill="#08111F" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">15 bài thực chiến</text>
+    <rect x="274" y="476" width="176" height="48" rx="24" fill="#111E36" stroke="#31415F"/>
+    <text x="304" y="507" fill="#F5F7FF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">7 chế độ học</text>
+    <rect x="464" y="476" width="202" height="48" rx="24" fill="#111E36" stroke="#31415F"/>
+    <text x="491" y="507" fill="#F5F7FF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Nói từ phút đầu</text>
+  </g>
+
+  <g>
+    <rect x="748" y="104" width="454" height="428" rx="30" fill="url(#panel)" stroke="#243653"/>
+    <circle cx="778" cy="136" r="6" fill="#FF7D8B"/>
+    <circle cx="800" cy="136" r="6" fill="#FFD166"/>
+    <circle cx="822" cy="136" r="6" fill="#7EF0C4"/>
+
+    <rect x="838" y="190" width="304" height="62" rx="22" fill="#EAF0FF"/>
+    <text x="862" y="228" fill="#08111F" font-family="Inter, Arial, sans-serif" font-size="22">I fix bug yesterday.</text>
+
+    <rect x="780" y="278" width="390" height="152" rx="24" fill="#101C31" stroke="#243653"/>
+    <text x="806" y="318" fill="#7EF0C4" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Better:</text>
+    <text x="884" y="318" fill="#F5F7FF" font-family="Inter, Arial, sans-serif" font-size="20">I fixed the bug yesterday.</text>
+    <text x="806" y="360" fill="#AFBAD5" font-family="Inter, Arial, sans-serif" font-size="16" letter-spacing="2">CHUNK</text>
+    <text x="806" y="394" fill="#F5F7FF" font-family="Inter, Arial, sans-serif" font-size="20">I’m still checking whether…</text>
+  </g>
+</svg>
