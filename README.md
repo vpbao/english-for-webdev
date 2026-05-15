@@ -36,6 +36,14 @@ It is built around one central idea: Vietnamese developers often know more Engli
 
 Examples favor PHP/Laravel, React/Next.js, and Node.js/TypeScript so the English stays close to real web-development work.
 
+## Website
+
+A polished GitHub Pages landing page lives in `docs/index.html`. Once Pages is enabled for the `docs/` folder, the public site can live at:
+
+```text
+https://vpbao.github.io/english-for-webdev/
+```
+
 ## Installation
 
 ### Option 1: Install the `.skill` file
@@ -46,7 +54,7 @@ Examples favor PHP/Laravel, React/Next.js, and Node.js/TypeScript so the English
 ### Option 2: Install from source
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/english-for-webdev.git
+git clone https://github.com/vpbao/english-for-webdev.git
 cp -r english-for-webdev ~/.claude/skills/
 ```
 

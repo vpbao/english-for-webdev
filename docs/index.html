@@ -1,0 +1,847 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="English for Web Developers giúp dev Việt chuyển từ đọc hiểu sang nói được ngay trong standup, PR, code review và phỏng vấn." />
+  <meta property="og:title" content="English for Web Developers" />
+  <meta property="og:description" content="Học tiếng Anh như một web developer thật sự dùng nó mỗi ngày." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%2352d6c8'/%3E%3Cpath d='M18 18h28v8H27v7h15v8H27v5h20v8H18z' fill='%2308111f'/%3E%3C/svg%3E" />
+  <title>English for Web Developers</title>
+  <style>
+    :root {
+      --bg: #08111f;
+      --bg-soft: #0d1830;
+      --surface: rgba(16, 27, 49, 0.78);
+      --surface-strong: #101b31;
+      --surface-2: #172644;
+      --border: rgba(151, 176, 224, 0.16);
+      --text: #f5f7ff;
+      --muted: #afbad5;
+      --accent: #8c7cff;
+      --accent-2: #52d6c8;
+      --accent-3: #ffd166;
+      --danger-soft: #ff9c9c;
+      --success: #7ef0c4;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --radius-sm: 14px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(140, 124, 255, 0.2), transparent 34%),
+        radial-gradient(circle at 80% 8%, rgba(82, 214, 200, 0.14), transparent 28%),
+        linear-gradient(180deg, #07101d 0%, #091324 42%, #07101d 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      overflow: hidden;
+    }
+
+    .shell {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 24px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      color: #07101d;
+      background: linear-gradient(135deg, var(--accent-2), var(--accent));
+      box-shadow: 0 12px 30px rgba(82, 214, 200, 0.18);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(360px, 0.96fr);
+      align-items: center;
+      gap: 40px;
+      padding: 54px 0 72px;
+    }
+
+    .eyebrow,
+    .kicker {
+      margin: 0 0 14px;
+      color: var(--accent-3);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(2.4rem, 5vw, 4.6rem);
+      line-height: 0.98;
+      letter-spacing: -0.075em;
+    }
+
+    .hero-copy {
+      margin: 22px 0 0;
+      max-width: 610px;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.18rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 180ms ease;
+    }
+
+    .button-primary {
+      color: #09101d;
+      background: linear-gradient(135deg, var(--accent-2), #91ffe4);
+      box-shadow: 0 18px 36px rgba(82, 214, 200, 0.18);
+    }
+
+    .button-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px rgba(82, 214, 200, 0.24);
+    }
+
+    .button-secondary {
+      color: var(--text);
+      border-color: var(--border);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .button-secondary:hover {
+      border-color: rgba(255, 255, 255, 0.28);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .micro-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .pill {
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.03);
+      font-size: 0.88rem;
+    }
+
+    .demo-shell {
+      position: relative;
+    }
+
+    .demo-shell::before {
+      position: absolute;
+      inset: -18px;
+      z-index: -1;
+      border-radius: 34px;
+      background: linear-gradient(135deg, rgba(140, 124, 255, 0.2), rgba(82, 214, 200, 0.08));
+      filter: blur(6px);
+      content: "";
+    }
+
+    .demo-card {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: rgba(10, 18, 35, 0.84);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .window-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .dot:nth-child(1) { background: #ff7d8b; }
+    .dot:nth-child(2) { background: #ffd166; }
+    .dot:nth-child(3) { background: #7ef0c4; }
+
+    .chat {
+      display: grid;
+      gap: 16px;
+      padding: 22px;
+    }
+
+    .bubble {
+      max-width: 92%;
+      padding: 16px 18px;
+      border-radius: 20px;
+      font-size: 0.98rem;
+    }
+
+    .bubble.user {
+      justify-self: end;
+      color: #09101d;
+      background: #dfe7ff;
+      border-bottom-right-radius: 6px;
+    }
+
+    .bubble.coach {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.04);
+      border-bottom-left-radius: 6px;
+    }
+
+    .coach strong {
+      color: var(--success);
+    }
+
+    .correction {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .line {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .line span:first-child {
+      min-width: 68px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .wrong {
+      color: var(--danger-soft);
+      text-decoration: line-through;
+    }
+
+    .right {
+      color: var(--success);
+    }
+
+    .section {
+      padding: 28px 0 72px;
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.6rem, 3vw, 2.45rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+    }
+
+    .section-copy {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .grid-3,
+    .grid-4,
+    .timeline,
+    .lesson-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.16);
+      backdrop-filter: blur(16px);
+    }
+
+    .pain-card,
+    .feature-card,
+    .scenario-card,
+    .lesson-card,
+    .step-card {
+      padding: 20px;
+    }
+
+    .card-label {
+      margin: 0 0 10px;
+      color: var(--accent-3);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.15rem;
+      letter-spacing: -0.025em;
+    }
+
+    .card p,
+    .card li {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .feature-card {
+      min-height: 198px;
+    }
+
+    .icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      border-radius: 14px;
+      color: #09101d;
+      background: linear-gradient(135deg, rgba(140, 124, 255, 0.95), rgba(82, 214, 200, 0.95));
+      font-weight: 800;
+    }
+
+    .scenario-card {
+      display: grid;
+      gap: 14px;
+    }
+
+    .scenario-card ul {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .quote-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 18px;
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, rgba(140, 124, 255, 0.12), rgba(82, 214, 200, 0.08));
+    }
+
+    .prompt-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .prompt-chip {
+      padding: 16px 18px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .prompt-chip span {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .quote-strip strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 1.05rem;
+    }
+
+    .quote-strip span {
+      color: var(--muted);
+    }
+
+    .lesson-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .lesson-list {
+      display: grid;
+      gap: 10px;
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .lesson-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .lesson-list li::before {
+      color: var(--accent-2);
+      content: "↳";
+    }
+
+    .timeline {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .step-number {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      border-radius: 999px;
+      color: #08111f;
+      background: var(--accent-3);
+      font-weight: 800;
+    }
+
+    .install {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .install-copy,
+    .install-code {
+      padding: 24px;
+    }
+
+    .install-copy p {
+      margin-top: 14px;
+    }
+
+    .install-code {
+      display: grid;
+      gap: 14px;
+      background: rgba(9, 15, 29, 0.92);
+    }
+
+    pre {
+      overflow-x: auto;
+      margin: 0;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      color: #eaf0ff;
+      background: #09101d;
+      font: 0.95rem/1.6 "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+
+    .footer {
+      padding: 10px 0 40px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .install {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .grid-3,
+      .lesson-grid,
+      .timeline,
+      .prompt-row {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+      }
+
+      .grid-4 {
+        grid-template-columns: 1fr;
+      }
+
+      .quote-strip {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="shell nav">
+      <a class="brand" href="#top" aria-label="English for Web Developers home">
+        <span class="brand-mark">E↗</span>
+        <span>English for Web Developers</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#why">Vì sao</a>
+        <a href="#how">Cách học</a>
+        <a href="#lessons">Lộ trình</a>
+        <a href="#install">Cài đặt</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="shell hero">
+        <div>
+          <p class="eyebrow">Speaking-first English for Vietnamese web developers</p>
+          <h1>Đọc hiểu được chưa đủ. Hãy nói ra được khi công việc cần.</h1>
+          <p class="hero-copy">
+            Nếu bạn đọc docs khá ổn nhưng đến lúc standup, review PR, hoặc phỏng vấn thì câu chữ vẫn mắc kẹt trong đầu,
+            skill này được tạo ra cho đúng khoảnh khắc đó.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#start">Bắt đầu học ngay</a>
+            <a class="button button-secondary" href="#install">Xem cách cài</a>
+          </div>
+          <div class="micro-stats" aria-label="Highlights">
+            <span class="pill">15 bài học thực chiến</span>
+            <span class="pill">7 chế độ luyện tập</span>
+            <span class="pill">Tập nói từ phút đầu tiên</span>
+          </div>
+        </div>
+
+        <div class="demo-shell" aria-label="Demo correction conversation">
+          <div class="demo-card">
+            <div class="window-bar" aria-hidden="true">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <div class="chat">
+              <div class="bubble user">I fix bug yesterday. Now still check checkout flow.</div>
+              <div class="bubble coach">
+                <strong>Better:</strong> I fixed the bug yesterday. I’m still checking whether it affects the checkout flow.
+                <div class="correction">
+                  <div class="line"><span>Why</span><div><span class="wrong">fix</span> → <span class="right">fixed</span> vì bạn nói về hôm qua.</div></div>
+                  <div class="line"><span>Chunk</span><div><span class="right">I’m still checking whether…</span> là mẫu bạn có thể dùng lại ngay trong standup.</div></div>
+                </div>
+              </div>
+              <div class="bubble coach">Giờ thử nói lại với bug của chính bạn nhé.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="shell section" id="why">
+        <div class="section-heading">
+          <p class="kicker">Bạn có thấy quen không?</p>
+          <h2>Bạn không thiếu tiếng Anh. Bạn thiếu những câu bật ra đủ nhanh khi làm việc.</h2>
+        </div>
+        <div class="grid-3">
+          <article class="card pain-card">
+            <p class="card-label">01</p>
+            <h3>Đọc được, nói chưa ra</h3>
+            <p>Bạn hiểu issue, docs, Stack Overflow — nhưng phải dịch trong đầu trước khi trả lời đồng đội.</p>
+          </article>
+          <article class="card pain-card">
+            <p class="card-label">02</p>
+            <h3>Biết từ, thiếu cụm</h3>
+            <p>Bạn biết “deploy”, “bug”, “review”, nhưng chưa có sẵn những mẫu như “I’m blocked by…” hay “This PR addresses…”.</p>
+          </article>
+          <article class="card pain-card">
+            <p class="card-label">03</p>
+            <h3>Học nhiều, dùng ít</h3>
+            <p>Bạn từng học ngữ pháp, nhưng hiếm khi được luyện đúng tình huống: standup, PR, bug report, interview.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="shell section" id="how">
+        <div class="section-heading">
+          <p class="kicker">Cách học khác đi</p>
+          <h2>Học tiếng Anh như một web developer thật sự dùng nó mỗi ngày.</h2>
+          <p class="section-copy">
+            Không nhồi từ rời rạc. Không trì hoãn kỹ năng nói đến “sau này”. Mỗi buổi học đều kéo bạn gần hơn tới một cuộc trao đổi thật.
+          </p>
+        </div>
+        <div class="grid-3">
+          <article class="card feature-card">
+            <div class="icon">01</div>
+            <h3>Speaking-first</h3>
+            <p>Bắt đầu bằng nói, phản xạ, role-play và timed drills — vì fluency là tốc độ truy xuất, không chỉ là kiến thức.</p>
+          </article>
+          <article class="card feature-card">
+            <div class="icon">02</div>
+            <h3>Chunk-based</h3>
+            <p>Học theo cụm có thể tái sử dụng: “I can reproduce this by…”, “One trade-off is…”, “Could you take a look at…?”</p>
+          </article>
+          <article class="card feature-card">
+            <div class="icon">03</div>
+            <h3>Work-native</h3>
+            <p>Mọi ví dụ bám sát Laravel, React, Next.js, Node.js, PR, bug, docs và interview — đúng vùng bạn đang sống mỗi ngày.</p>
+          </article>
+        </div>
+
+        <div class="quote-strip" id="start">
+          <div>
+            <strong>Bạn có thể bắt đầu rất đơn giản:</strong>
+            <span>“Dạy mình viết PR description”, “luyện standup”, hoặc “sửa giúp mình câu này”.</span>
+          </div>
+          <a class="button button-secondary" href="#install">Muốn cài trước</a>
+        </div>
+        <div class="prompt-row" aria-label="Example prompts">
+          <div class="prompt-chip">
+            <span>Prompt 01</span>
+            dạy mình viết PR description
+          </div>
+          <div class="prompt-chip">
+            <span>Prompt 02</span>
+            luyện standup 5 phút
+          </div>
+          <div class="prompt-chip">
+            <span>Prompt 03</span>
+            sửa giúp mình câu này
+          </div>
+        </div>
+      </section>
+
+      <section class="shell section">
+        <div class="section-heading">
+          <p class="kicker">Dùng được ngay trong công việc</p>
+          <h2>Không phải tiếng Anh giáo trình. Là tiếng Anh của một ngày làm dev.</h2>
+        </div>
+        <div class="grid-4">
+          <article class="card scenario-card">
+            <h3>Standup</h3>
+            <ul>
+              <li>I’ve completed…</li>
+              <li>I’m currently working on…</li>
+              <li>I’m blocked by…</li>
+            </ul>
+          </article>
+          <article class="card scenario-card">
+            <h3>PR & review</h3>
+            <ul>
+              <li>This PR addresses…</li>
+              <li>Consider using… instead</li>
+              <li>Nice refactor!</li>
+            </ul>
+          </article>
+          <article class="card scenario-card">
+            <h3>Bug reports</h3>
+            <ul>
+              <li>I can reproduce this by…</li>
+              <li>Expected / Actual behavior</li>
+              <li>The root cause seems to be…</li>
+            </ul>
+          </article>
+          <article class="card scenario-card">
+            <h3>Interviews</h3>
+            <ul>
+              <li>Let me think about this…</li>
+              <li>One approach could be…</li>
+              <li>The trade-off is…</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="shell section" id="lessons">
+        <div class="section-heading">
+          <p class="kicker">Lộ trình 15 bài</p>
+          <h2>Từ “đọc được” đến “giao tiếp như một teammate toàn cầu”.</h2>
+        </div>
+        <div class="lesson-grid">
+          <article class="card lesson-card">
+            <p class="card-label">Beginner</p>
+            <h3>Foundation</h3>
+            <ul class="lesson-list">
+              <li>Reading error messages like a pro</li>
+              <li>Your first PR description</li>
+              <li>Standup survival kit</li>
+              <li>Git commit messages</li>
+              <li>Slack 101 for developers</li>
+            </ul>
+          </article>
+          <article class="card lesson-card">
+            <p class="card-label">Intermediate</p>
+            <h3>Professional communication</h3>
+            <ul class="lesson-list">
+              <li>Code review language</li>
+              <li>Bug reports that get fixed</li>
+              <li>Explaining architecture</li>
+              <li>Email to your tech lead</li>
+              <li>Sprint planning vocabulary</li>
+            </ul>
+          </article>
+          <article class="card lesson-card">
+            <p class="card-label">Advanced</p>
+            <h3>High-stakes English</h3>
+            <ul class="lesson-list">
+              <li>Technical interview</li>
+              <li>System design discussion</li>
+              <li>Presenting a demo</li>
+              <li>Writing an RFC / tech spec</li>
+              <li>Negotiating decisions</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="shell section">
+        <div class="section-heading">
+          <p class="kicker">Một vòng học</p>
+          <h2>Ngắn, thực tế, và có quán tính để bạn quay lại.</h2>
+        </div>
+        <div class="timeline">
+          <article class="card step-card">
+            <div class="step-number">1</div>
+            <h3>Nói điều bạn cần</h3>
+            <p>“Luyện phỏng vấn”, “sửa email này”, “tạo lộ trình cho mình”. Nếu yêu cầu rõ, skill làm thẳng luôn.</p>
+          </article>
+          <article class="card step-card">
+            <div class="step-number">2</div>
+            <h3>Học qua việc thật</h3>
+            <p>Bạn nhận correction, chunk, mini-drill, ví dụ đúng stack và bài tập dùng được vào ngày mai.</p>
+          </article>
+          <article class="card step-card">
+            <div class="step-number">3</div>
+            <h3>Tiến bộ có dấu vết</h3>
+            <p>XP, streak, lỗi lặp lại và cụm từ cần ôn được giữ trong một progress file xuyên suốt các buổi học.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="shell section" id="install">
+        <div class="install">
+          <article class="card install-copy">
+            <p class="kicker">Sẵn sàng bắt đầu?</p>
+            <h2>Cài trong một phút. Dùng như đang nhắn tin.</h2>
+            <p>
+              Khi đã thấy hợp, bạn có thể tải file <strong>english-for-webdev.skill</strong> rồi mở nó để cài vào Claude,
+              hoặc clone repo nếu muốn xem toàn bộ cấu trúc từ source.
+            </p>
+          </article>
+          <article class="card install-code">
+            <div>
+              <p class="card-label">Option 1</p>
+              <h3>Cài bằng file skill</h3>
+            </div>
+            <pre><code>Download english-for-webdev.skill
+Double-click to install into Claude</code></pre>
+            <div>
+              <p class="card-label">Option 2</p>
+              <h3>Cài từ source</h3>
+            </div>
+            <pre><code>git clone https://github.com/vpbao/english-for-webdev.git
+cp -r english-for-webdev ~/.claude/skills/</code></pre>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="shell footer">
+      Từ “dịch trong đầu” đến “nói ra được ngay”.
+    </footer>
+  </div>
+</body>
+</html>
